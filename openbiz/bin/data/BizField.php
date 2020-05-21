@@ -183,15 +183,6 @@ class BizField extends MetaObject
         {
             return "";
         }
-        /*
-        if ($this->m_Type != 'Number')
-        {
-            if (get_magic_quotes_gpc() == 0) {
-                $val = addcslashes($value, "\000\n\r\\'\"\032");
-            }
-            return "'$value'";
-        }
-        */
 
         return $value;
     }
