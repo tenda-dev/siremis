@@ -187,11 +187,6 @@ class ClientProxy
                 {
                     $result = $_POST[$controlName];
                 }
-                if (get_magic_quotes_gpc() == 1)
-                {
-                    if (!is_array($result))
-                        $result = stripslashes($result);
-                }
                 return $result;
             }
             else
