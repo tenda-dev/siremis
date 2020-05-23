@@ -5,9 +5,10 @@
         <Element Name="fld_Id" Class="ColumnText" FieldName="Id" Label="Id" Sortable="Y" AllowURLParam="N" Link="javascript:">         
          	<EventHandler Name="fld_Id_onclick" Event="onclick" Function="SwitchForm(sipadmin.srv.version.form.VersionDetailForm,{@:Elem[fld_Id].Value})"   />
         </Element>
-                <Element Name="fld_table_version" Class="ColumnText" FieldName="table_version" Label="Table Version"  Sortable="Y" Link="javascript:">
-         		<EventHandler Name="fld_table_version_onclick" Event="onclick" Function="SwitchForm(sipadmin.srv.version.form.VersionDetailForm,{@:Elem[fld_Id].Value})"   />
+                <Element Name="fld_table_name" Class="ColumnText" FieldName="table_name" Label="Table Name"  Sortable="Y" Link="javascript:">
+         		<EventHandler Name="fld_table_name_onclick" Event="onclick" Function="SwitchForm(sipadmin.srv.version.form.VersionDetailForm,{@:Elem[fld_Id].Value})"   />
         </Element>
+                <Element Name="fld_table_version" Class="ColumnText" FieldName="table_version" Label="Table Version"  Sortable="Y"/>
     </DataPanel>
     <ActionPanel>
         <Element Name="lnk_new" Class="Button" Text="Add" CssClass="button_gray_add" Description="new record (Insert)" >

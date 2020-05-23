@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EasyForm Name="VersionSearchForm" Class="sipadmin.common.form.EasySearchForm" FormType="Search" jsClass="jbForm" Title="Search Version" Description="" BizDataObj="sipadmin.srv.version.do.VersionDO" TemplateEngine="Smarty" TemplateFile="detail.tpl" EventName="" MessageFile="">
     <DataPanel>
+        <Element Name="fld_table_name" Class="InputText" FieldName="table_name" Label="Table Name"  AllowURLParam="N" CssClass="input_text" CssErrorClass="input_text_error" CssFocusClass="input_text_focus"/>
         <Element Name="fld_table_version" Class="InputText" FieldName="table_version" Label="Table Version"  AllowURLParam="N" CssClass="input_text" CssErrorClass="input_text_error" CssFocusClass="input_text_focus"/>
         </DataPanel>
     <ActionPanel>
