@@ -22,6 +22,16 @@ To install and deploy Siremis using Docker, see:
   * misc/docker/README.md
   * on github: https://github.com/asipto/siremis/tree/master/misc/docker
 
+### Security Considerations
+
+Siremis is an administration tool, not audited for security, intended to run on a protected environment.
+
+It is recommended to:
+
+  * run it in a private network
+  * run it over HTTPS
+  * add extra protection at HTTP server or firewall layers (e.g., HTTP auth, IP restrictions, etc)
+
 ### Resources
 
 Mailing lists
