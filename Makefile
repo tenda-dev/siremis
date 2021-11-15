@@ -3,7 +3,7 @@
 # make variables
 NAME ?= siremis
 URLBASE ?= $(NAME)
-BASEDIR=`pwd`
+BASEDIR ?= `pwd`
 SIREMISDIR=$(BASEDIR)/$(NAME)
 VERSION=5.3.0
 
