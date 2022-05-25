@@ -22,7 +22,7 @@ WORKDIR /var/www/siremis
 RUN make prepare24 && \
 	make chown
 
-COPY files/000-default.conf.debian10 /etc/apache2/sites-available/000-default.conf
+COPY files/000-default.conf.apache24 /etc/apache2/sites-available/000-default.conf
 COPY files/siremisrun.sh /usr/local/bin/siremisrun.sh
 
 ENTRYPOINT ["/usr/local/bin/siremisrun.sh"]
