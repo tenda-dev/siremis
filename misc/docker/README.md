@@ -28,7 +28,7 @@ if needed -- see the instructions at:
 
   * http://kb.asipto.com/siremis:install51x:main#database_configuration
 
-The use an web browser and navigate to:
+Then use a web browser and navigate to:
 
   * http://127.0.0.1/siremis/
 
