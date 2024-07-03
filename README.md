@@ -6,9 +6,11 @@ v5.3.0
 
 Web: https://www.siremis.org
 
-Compatible with Kamailio: v5.2.x and v5.3.x
+Compatible with Kamailio: v5.x
 
   * https://www.kamailio.org
+
+Note: Siremis works with PHP 7.x and it has no support for PHP 8.x.
 
 ### Install
 
