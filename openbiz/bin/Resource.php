@@ -310,6 +310,7 @@ class Resource
             // search in apphome/modules directory first, search in apphome/bin directory then
             $classfiles[0] = MODULE_PATH . "/" . $path . "/" . $classFile;
             $classfiles[1] = APP_HOME . "/bin/" . $path . "/" . $classFile;
+            $classfiles[2] = APP_HOME . "/bin/" . $classFile;
             foreach ($classfiles as $classFile)
             {
                 if (file_exists($classFile))
@@ -391,14 +392,19 @@ class Resource
         else
         {
             include_once(OPENBIZ_BIN . "util/xmltoarray.php");
-            $parser = new XMLParser($objXmlFileName, 'file', 1);
+            $parser = new XMLParserX($objXmlFileName, 'file', 1);
             $xmlArr = $parser->getTree();
+	    // print_r($xmlArr);
             // simple validate the xml array
             $root_keys = array_keys($xmlArr);
+            if (!$root_keys)
+	    {
+                trigger_error("Metadata file parsing error for file $objXmlFileName. Please double check your metadata xml file again.", E_USER_ERROR);
+            }
             $root_key = $root_keys[0];
             if (!$root_key || $root_key == "")
             {
-                trigger_error("Metadata file parsing error for file $objXmlFileName. Please double check your metadata xml file again.", E_USER_ERROR);
+                trigger_error("No root node 0 for file $objXmlFileName ($root_key). Please double check your metadata xml file again.", E_USER_ERROR);
             }
             $xmlArrStr = serialize($xmlArr);
             if (!file_exists(dirname($objCmpFileName)))
