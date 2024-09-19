@@ -30,7 +30,7 @@ echo "<pre>";
 print_r($tree);
 echo "</pre>";
 */
-class XMLParser {
+class XMLParserX {
 	var $data;		// Input XML data buffer
 	var $vals;		// Struct created by xml_parse_into_struct
 	var $collapse_dups;	// If there is only one tag of a given name,
@@ -64,7 +64,7 @@ class XMLParser {
 		}
 	}
 
-	function XMLParser($data_source, $data_source_type='raw', $collapse_dups=0, $index_numeric=0) {
+	function XMLParserX($data_source, $data_source_type='raw', $collapse_dups=0, $index_numeric=0) {
 		self::__construct($data_source, $data_source_type, $collapse_dups, $index_numeric);
 	}
 
@@ -81,6 +81,7 @@ class XMLParser {
 		xml_parser_set_option($parser, XML_OPTION_SKIP_WHITE, 1);
 		xml_parse_into_struct($parser, $this->data, $vals, $index); 
 		xml_parser_free($parser);
+		// print_r($vals);
 
 		$i = -1;
 		return $this->getchildren($vals, $i);
@@ -91,9 +92,11 @@ class XMLParser {
 
 		if (isset($thisvals['attributes']))
 			$tag['ATTRIBUTES'] = $thisvals['attributes']; 
+		else
+			$tag = array();
 
 		// complete tag, just return it for storage in array
-		if ($type === 'complete')
+		if ($type === 'complete' && isset($thisvals['value']))
 			$tag['VALUE'] = $thisvals['value'];
 
 		// open tag, recurse
@@ -107,12 +110,15 @@ class XMLParser {
 	function getchildren($vals, &$i) { 
 		$children = array();     // Contains node data
 
+		print_r($vals);
+
 		// Node has CDATA before it's children
                 if ($i > -1 && isset($vals[$i]['value']))
 			$children['VALUE'] = $vals[$i]['value'];
 
+		$c = count($vals);
 		// Loop through children, until hit close tag or run out of tags
-		while (++$i < count($vals)) { 
+		while (++$i < $c) {
 
 			$type = $vals[$i]['type'];
 
@@ -128,8 +134,11 @@ class XMLParser {
 				if ($this->index_numeric) {
 					$tag['TAG'] = $vals[$i]['tag'];
 					$children[] = $tag;
-				} else
-					$children[$vals[$i]['tag']][] = $tag;
+				} else {
+					if(isset($vals[$i]) && isset($vals[$i]['tag'])) {
+						$children[$vals[$i]['tag']][] = $tag;
+					}
+				}
 			}
 
 			// 'close:	End of node, return collected data
