@@ -96,25 +96,24 @@ setDocumentRoot();
  * @param string $className
  * @return void
  **/
-function __autoload($className)
-{
+spl_autoload_register(function ($className) {
     $filePath = BizSystem::getLibFileWithPath($className);
     if ($filePath)
     {
         include_once($filePath);
         return;
     }
-}
+});
 
 /**
  * User error handler function
  *
  * @package openbiz.bin
  */
-function userErrorHandler ($errno, $errmsg, $filename, $linenum, $vars)
+function userErrorHandler ($errno, $errmsg, $filename, $linenum)
 {
     include_once(OPENBIZ_BIN.'ErrorHandler.php');
-    OB_ErrorHandler::ErrorHandler($errno, $errmsg, $filename, $linenum, $vars);
+    OB_ErrorHandler::ErrorHandler($errno, $errmsg, $filename, $linenum);
 }
 
 /**
