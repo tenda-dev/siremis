@@ -36,7 +36,7 @@ class OB_ErrorHandler
      * @param <type> $vars (not yet implemented)
      * @return void
      */
-    public static function errorHandler ($errNo, $errMsg, $fileName, $lineNum, $vars)
+    public static function errorHandler ($errNo, $errMsg, $fileName, $lineNum)
     {
         // don't respond to the error if it
         // was suppressed with a '@'
