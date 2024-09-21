@@ -20,8 +20,8 @@
 	<td><label>Siremis DB Type</label></td>
 	<td>
     <SELECT NAME="dbtype">
-    <OPTION VALUE="Pdo_Mysql"<?php if($_REQUEST['dbtype']=="Pdo_Mysql") echo " selected='selected'";?>>MySQL
-    <OPTION VALUE="Pdo_Pgsql"<?php if($_REQUEST['dbtype']=="Pdo_Pgsql") echo " selected='selected'";?>>PostgreSQL (Incomplete)
+    <OPTION VALUE="Pdo_Mysql" <?php if(!isset($_REQUEST['dbtype']) || ($_REQUEST['dbtype']=="Pdo_Mysql")) echo " selected='selected'";?>>MySQL</OPTION>
+    <OPTION VALUE="Pdo_Pgsql" <?php if(isset($_REQUEST['dbtype'] && ($_REQUEST['dbtype']=="Pdo_Pgsql")) echo " selected='selected'";?>>PostgreSQL (Incomplete)</OPTION>
     </SELECT>
     </td>
 </tr>
