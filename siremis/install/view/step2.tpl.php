@@ -20,35 +20,35 @@
 	<td><label>Siremis DB Type</label></td>
 	<td>
     <SELECT NAME="dbtype">
-    <OPTION VALUE="Pdo_Mysql" <?php if(!isset($_REQUEST['dbtype']) || ($_REQUEST['dbtype']=="Pdo_Mysql")) { echo " selected='selected'"; } ?>>MySQL</OPTION>
-    <OPTION VALUE="Pdo_Pgsql" <?php if(isset($_REQUEST['dbtype']) && ($_REQUEST['dbtype']=="Pdo_Pgsql")) { echo " selected='selected'"; } ?>>PostgreSQL (Incomplete)</OPTION>
+    <OPTION VALUE="Pdo_Mysql" <?php if (!isset($_REQUEST['dbtype']) || ($_REQUEST['dbtype'] == 'Pdo_Mysql')) { echo " selected='selected'"; } ?>>MySQL</OPTION>
+    <OPTION VALUE="Pdo_Pgsql" <?php if (isset($_REQUEST['dbtype']) && ($_REQUEST['dbtype'] == 'Pdo_Pgsql')) { echo " selected='selected'"; } ?>>PostgreSQL (Incomplete)</OPTION>
     </SELECT>
     </td>
 </tr>
 <tr>
 	<td><label>Siremis DB Host Name</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'"
-    	 type="text" name="dbHostName" value="<?php echo  isset($_REQUEST['dbHostName']) ? $_REQUEST['dbHostName'] : 'localhost'?>" tabindex="1" ></td>
+    	 type="text" name="dbHostName" value="<?php echo isset($_REQUEST['dbHostName']) ? $_REQUEST['dbHostName'] : 'localhost' ?>" tabindex="1" ></td>
 </tr>
 <tr>
 	<td><label>Siremis DB Port</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'" 
-    		type="text" name="dbHostPort" value="<?php echo  isset($_REQUEST['dbHostPort']) ? $_REQUEST['dbHostPort'] : '3306'?>" tabindex="3"></td>
+    		type="text" name="dbHostPort" value="<?php echo isset($_REQUEST['dbHostPort']) ? $_REQUEST['dbHostPort'] : '3306' ?>" tabindex="3"></td>
 </tr>
 <tr>
 	<td><label>Siremis DB Name</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'" 
-    		type="text" name="dbName" value="<?php echo  isset($_REQUEST['dbName']) ? $_REQUEST['dbName'] : 'siremis'?>" tabindex="3"></td>
+    		type="text" name="dbName" value="<?php echo isset($_REQUEST['dbName']) ? $_REQUEST['dbName'] : 'siremis' ?>" tabindex="3"></td>
 </tr>
 <tr>
 	<td ><label>Siremis DB Username</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'"
-    		 type="text" name="dbUserName" value="<?php echo  isset($_REQUEST['dbUserName']) ? $_REQUEST['dbUserName'] : 'siremis'?>" tabindex="4"> <span class="input_desc">&nbsp;</span></td>
+    		 type="text" name="dbUserName" value="<?php echo isset($_REQUEST['dbUserName']) ? $_REQUEST['dbUserName'] : 'siremis' ?>" tabindex="4"> <span class="input_desc">&nbsp;</span></td>
 </tr>
 <tr>
 	<td ><label>Siremis DB Password</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'"
-    		type="password" name="dbPassword" value="<?php echo  isset($_REQUEST['dbPassword']) ? $_REQUEST['dbPassword'] : 'siremisrw'?>" tabindex="5" > <span class="input_desc">&nbsp;</span></td>
+    		type="password" name="dbPassword" value="<?php echo isset($_REQUEST['dbPassword']) ? $_REQUEST['dbPassword'] : 'siremisrw' ?>" tabindex="5" > <span class="input_desc">&nbsp;</span></td>
 </tr>
 <tr>
 	<td> </td>
@@ -58,37 +58,37 @@
 	<td><label>SIP DB Type</label></td>
 	<td>
     <SELECT NAME="db1type">
-    <OPTION VALUE="Pdo_Mysql"<?php if(!isset($_REQUEST['dbtype']) || $_REQUEST['dbtype']=="Pdo_Mysql") echo " selected='selected'";?>>MySQL
-    <OPTION VALUE="Pdo_Pgsql"<?php if(isset($_REQUEST['dbtype']) && $_REQUEST['dbtype']=="Pdo_Pgsql") echo " selected='selected'";?>>PostgreSQL
-    <OPTION VALUE="Pdo_OCi"<?php if(isset($_REQUEST['dbtype']) && $_REQUEST['dbtype']=="Pdo_OCi") echo " selected='selected'";?>>Oracle 
-    <OPTION VALUE="Pdo_Mssql"<?php if(isset($_REQUEST['dbtype']) && $_REQUEST['dbtype']=="Pdo_Mssql") echo " selected='selected'";?>>SQL Server
+    <OPTION VALUE="Pdo_Mysql"<?php if (!isset($_REQUEST['dbtype']) || $_REQUEST['dbtype'] == 'Pdo_Mysql') { echo " selected='selected'"; } ?>>MySQL
+    <OPTION VALUE="Pdo_Pgsql"<?php if (isset($_REQUEST['dbtype']) && $_REQUEST['dbtype'] == 'Pdo_Pgsql') { echo " selected='selected'"; } ?>>PostgreSQL
+    <OPTION VALUE="Pdo_OCi"<?php if (isset($_REQUEST['dbtype']) && $_REQUEST['dbtype'] == 'Pdo_OCi') { echo " selected='selected'"; } ?>>Oracle 
+    <OPTION VALUE="Pdo_Mssql"<?php if (isset($_REQUEST['dbtype']) && $_REQUEST['dbtype'] == 'Pdo_Mssql') { echo " selected='selected'"; } ?>>SQL Server
     </SELECT>
     </td>
 </tr>
 <tr>
 	<td><label>SIP DB Host Name</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'"
-    	 type="text" name="db1HostName" value="<?php echo  isset($_REQUEST['db1HostName']) ? $_REQUEST['db1HostName'] : 'localhost'?>" ></td>
+    	 type="text" name="db1HostName" value="<?php echo isset($_REQUEST['db1HostName']) ? $_REQUEST['db1HostName'] : 'localhost' ?>" ></td>
 </tr>
 <tr>
 	<td><label>SIP DB Port</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'" 
-    		type="text" name="db1HostPort" value="<?php echo  isset($_REQUEST['db1HostPort']) ? $_REQUEST['db1HostPort'] : '3306'?>"></td>
+    		type="text" name="db1HostPort" value="<?php echo isset($_REQUEST['db1HostPort']) ? $_REQUEST['db1HostPort'] : '3306' ?>"></td>
 </tr>
 <tr>
 	<td><label>SIP DB Name</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'" 
-    		type="text" name="db1Name" value="<?php echo  isset($_REQUEST['db1Name']) ? $_REQUEST['db1Name'] : 'kamailio'?>"></td>
+    		type="text" name="db1Name" value="<?php echo isset($_REQUEST['db1Name']) ? $_REQUEST['db1Name'] : 'kamailio' ?>"></td>
 </tr>
 <tr>
 	<td ><label>SIP DB Username</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'"
-    		 type="text" name="db1UserName" value="<?php echo  isset($_REQUEST['db1UserName']) ? $_REQUEST['db1UserName'] : 'kamailio'?>"> <span class="input_desc">&nbsp;</span></td>
+    		 type="text" name="db1UserName" value="<?php echo isset($_REQUEST['db1UserName']) ? $_REQUEST['db1UserName'] : 'kamailio' ?>"> <span class="input_desc">&nbsp;</span></td>
 </tr>
 <tr>
 	<td ><label>SIP DB Password</label></td>
 	<td><input class="input_text" onfocus="this.className='input_text_focus'" onblur="this.className='input_text'"
-    		type="password" name="db1Password" value="<?php echo  isset($_REQUEST['db1Password']) ? $_REQUEST['db1Password'] : 'kamailiorw'?>"> <span class="input_desc">&nbsp;</span></td>
+    		type="password" name="db1Password" value="<?php echo isset($_REQUEST['db1Password']) ? $_REQUEST['db1Password'] : 'kamailiorw' ?>"> <span class="input_desc">&nbsp;</span></td>
 </tr>
 <tr>
 	<td> </td>
