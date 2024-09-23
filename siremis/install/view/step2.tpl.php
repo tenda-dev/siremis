@@ -20,8 +20,8 @@
 	<td><label>Siremis DB Type</label></td>
 	<td>
     <SELECT NAME="dbtype">
-    <OPTION VALUE="Pdo_Mysql" <?php if(!isset($_REQUEST['dbtype']) || ($_REQUEST['dbtype']=="Pdo_Mysql")) echo " selected='selected'";?>>MySQL</OPTION>
-    <OPTION VALUE="Pdo_Pgsql" <?php if(isset($_REQUEST['dbtype'] && ($_REQUEST['dbtype']=="Pdo_Pgsql")) echo " selected='selected'";?>>PostgreSQL (Incomplete)</OPTION>
+    <OPTION VALUE="Pdo_Mysql" <?php if(!isset($_REQUEST['dbtype']) || ($_REQUEST['dbtype']=="Pdo_Mysql")) { echo " selected='selected'"; } ?>>MySQL</OPTION>
+    <OPTION VALUE="Pdo_Pgsql" <?php if(isset($_REQUEST['dbtype']) && ($_REQUEST['dbtype']=="Pdo_Pgsql")) { echo " selected='selected'"; } ?>>PostgreSQL (Incomplete)</OPTION>
     </SELECT>
     </td>
 </tr>
@@ -58,10 +58,10 @@
 	<td><label>SIP DB Type</label></td>
 	<td>
     <SELECT NAME="db1type">
-    <OPTION VALUE="Pdo_Mysql"<?php if($_REQUEST['dbtype']=="Pdo_Mysql") echo " selected='selected'";?>>MySQL
-    <OPTION VALUE="Pdo_Pgsql"<?php if($_REQUEST['dbtype']=="Pdo_Pgsql") echo " selected='selected'";?>>PostgreSQL
-    <OPTION VALUE="Pdo_OCi"<?php if($_REQUEST['dbtype']=="Pdo_OCi") echo " selected='selected'";?>>Oracle 
-    <OPTION VALUE="Pdo_Mssql"<?php if($_REQUEST['dbtype']=="Pdo_Mssql") echo " selected='selected'";?>>SQL Server
+    <OPTION VALUE="Pdo_Mysql"<?php if(!isset($_REQUEST['dbtype']) || $_REQUEST['dbtype']=="Pdo_Mysql") echo " selected='selected'";?>>MySQL
+    <OPTION VALUE="Pdo_Pgsql"<?php if(isset($_REQUEST['dbtype']) && $_REQUEST['dbtype']=="Pdo_Pgsql") echo " selected='selected'";?>>PostgreSQL
+    <OPTION VALUE="Pdo_OCi"<?php if(isset($_REQUEST['dbtype']) && $_REQUEST['dbtype']=="Pdo_OCi") echo " selected='selected'";?>>Oracle 
+    <OPTION VALUE="Pdo_Mssql"<?php if(isset($_REQUEST['dbtype']) && $_REQUEST['dbtype']=="Pdo_Mssql") echo " selected='selected'";?>>SQL Server
     </SELECT>
     </td>
 </tr>
