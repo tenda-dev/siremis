@@ -40,23 +40,28 @@ class OB_ErrorHandler
     {
         // don't respond to the error if it
         // was suppressed with a '@'
-        if (error_reporting() == 0)
-            return;
-        if ($errNo == E_NOTICE || $errNo == E_STRICT) // || $errno == E_WARNING)
-            return; // ignore notice error
+        if (error_reporting() == 0) {
+			return;
+		}
+        if ($errNo == E_NOTICE || $errNo == E_STRICT) { // || $errno == E_WARNING)
+			return; // ignore notice error
+		}
 
+		error_log("[" . $errNo . "] [" . $fileName . ":" . $lineNum . "] {| " . $errMsg . "|}");
         $debug_array = debug_backtrace();
         $back_trace = self::_errorBacktrace($debug_array);
         $err = self::_getOutputErrorMsg($errNo, $errMsg, $fileName, $lineNum, $back_trace);
         //Send Error to Log Service;
         BizSystem::logError ($errNo, "ErrorHandler", $errMsg, null, $back_trace);
-        if (defined('CLI') && CLI)
+        if (defined('CLI') && CLI) {
         	echo $err;
-        else
+		} else {
         	BizSystem::clientProxy()->showErrorMessage($err, true);
-
-        if ($errNo == E_USER_ERROR || $errNo == E_ERROR)
-            exit();
+		}
+        if ($errNo == E_USER_ERROR || $errNo == E_ERROR) {
+			error_log("exiting ...");
+			exit();
+		}
     }
 
     /**
@@ -75,11 +80,14 @@ class OB_ErrorHandler
         $back_trace = self::_errorBacktrace($debug_array);
         $err = self::_getOutputErrorMsg($errno, $errmsg, $filename, $linenum, $back_trace);
 
+		error_log("[" . $errno . "] [" . $filename . ":" . $linenum . "] {| " . $errmsg . " |} -- {| " . $back_trace . " |}");
         BizSystem::logError ($errno, "ExceptionHandler", $errmsg, null, $back_trace);
-        if (defined('CLI') && CLI)
+        if (defined('CLI') && CLI) {
         	echo $err;
-        else
+		} else {
         	BizSystem::clientProxy()->showErrorMessage($err, true);
+		}
+		error_log("exiting ...");
         exit();
     }
 
@@ -107,8 +115,9 @@ class OB_ErrorHandler
         //$err .= "Variable state when error occurred: $vars<br>";
         $err .= "<hr>";
         $err .= "Please ask system administrator for help...</div>\n";
-        if (defined('CLI') && CLI)
-        	$err = strip_tags($err);
+        if (defined('CLI') && CLI) {
+			$err = strip_tags($err);
+		}
         return $err;
     }
 
@@ -120,12 +129,12 @@ class OB_ErrorHandler
      */
     private static function _errorBacktrace ($debug_array = NULL)
     {
-        if ($debug_array == NULL)
-            $debug_array = debug_backtrace();
+        if ($debug_array == NULL) {
+			$debug_array = debug_backtrace();
+		}
         $counter = count($debug_array);
         $msg = "";
-        for ($tmp_counter = 0; $tmp_counter != $counter; ++ $tmp_counter)
-        {
+        for ($tmp_counter = 0; $tmp_counter != $counter; ++ $tmp_counter) {
             $msg .= "<br><b>function:</b> ";
             $msg .= $debug_array[$tmp_counter]["function"] . " ( ";
             //count how many args a there
@@ -166,10 +175,11 @@ class OB_ErrorHandler
                     default:
                         $msg .= 'Unknown';
                 }
-                if (($tmp_args_counter + 1) != $args_counter)
+                if (($tmp_args_counter + 1) != $args_counter) {
                     $msg .= (", ");
-                else
+				} else {
                     $msg .= (" ");
+				}
             }
             $msg .= ") @ ";
             if(isset($debug_array[$tmp_counter]["file"]))
@@ -180,11 +190,11 @@ class OB_ErrorHandler
             {
                 $msg .= ($debug_array[$tmp_counter]["line"]);
             }
-            if (($tmp_counter + 1) != $counter)
-                $msg .= "\n";
+            if (($tmp_counter + 1) != $counter) {
+				$msg .= "\n";
+			}
         }
         return $msg;
     }
-
 }
 ?>
