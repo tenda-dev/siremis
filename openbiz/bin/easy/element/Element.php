@@ -274,7 +274,7 @@ class Element extends MetaObject implements iUIControl
             $style = Expression::evaluateExpression($style, $formobj);
             $style = "STYLE='$style'";
         }
-        if($formobj->m_Errors[$this->m_Name])
+        if(isset($formobj->m_Errors[$this->m_Name]))
         {
       	    $htmlClass = "CLASS='".$this->m_cssErrorClass."'";
         }
@@ -369,7 +369,7 @@ class Element extends MetaObject implements iUIControl
             $event = $eventHandler->m_Event;
             $type = $eventHandler->m_FunctionType;
             if (!$event) continue;
-            if($events[$event]!=""){
+            if(isset($events) && isset($events[$event])){
             	$events[$event]=array_merge(array($events[$event]),array($eventHandler->getFormedFunction()));
             }else{
             	$events[$event]=$eventHandler->getFormedFunction();
