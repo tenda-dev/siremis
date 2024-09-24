@@ -33,6 +33,7 @@ class InputElement extends Element
     public $m_Required = "N";
     public $m_Enabled = "Y";      // support expression
     public $m_Text;
+	public $m_ValuePicker;
 
     /**
      * Read array meta data, and store to meta object
@@ -52,7 +53,9 @@ class InputElement extends Element
         $this->m_Text = isset($xmlArr["ATTRIBUTES"]["TEXT"]) ? I18n::getInstance()->translate($xmlArr["ATTRIBUTES"]["TEXT"]) : null;
 
         // if no class name, add default class name. i.e. NewRecord => ObjName.NewRecord
-        $this->m_ValuePicker = $this->prefixPackage($this->m_ValuePicker);
+		if(isset($this->m_ValuePicker)) {
+			$this->m_ValuePicker = $this->prefixPackage($this->m_ValuePicker);
+		}
     }
 
 
