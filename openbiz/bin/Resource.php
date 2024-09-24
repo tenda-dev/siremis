@@ -396,15 +396,19 @@ class Resource
             $xmlArr = $parser->getTree();
 	    // print_r($xmlArr);
             // simple validate the xml array
+			error_log("----- xmlArr (" . __FILE__ . ":" . __LINE__ . " {| " . print_r($xmlArr, true) . " |}");
             $root_keys = array_keys($xmlArr);
+			error_log("----- root_keys (" . __FILE__ . ":" . __LINE__ . " {| " . print_r($root_keys, true) . " |}");
             if (!$root_keys)
 	    {
-                trigger_error("Metadata file parsing error for file $objXmlFileName. Please double check your metadata xml file again.", E_USER_ERROR);
+            	$xmlArrStr = serialize($xmlArr);
+                trigger_error("Metadata file parsing error for file $objXmlFileName {| $xmlArrStr |}. Please double check your metadata xml file again.", E_USER_ERROR);
             }
             $root_key = $root_keys[0];
             if (!$root_key || $root_key == "")
             {
-                trigger_error("No root node 0 for file $objXmlFileName ($root_key). Please double check your metadata xml file again.", E_USER_ERROR);
+            	$xmlArrStr = serialize($xmlArr);
+                trigger_error("No root node 0 for file $objXmlFileName ($root_key) {| $xmlArrStr |}. Please double check your metadata xml file again.", E_USER_ERROR);
             }
             $xmlArrStr = serialize($xmlArr);
             if (!file_exists(dirname($objCmpFileName)))
