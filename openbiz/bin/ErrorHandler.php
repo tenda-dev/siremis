@@ -129,7 +129,7 @@ class OB_ErrorHandler
             $msg .= "<br><b>function:</b> ";
             $msg .= $debug_array[$tmp_counter]["function"] . " ( ";
             //count how many args a there
-			if(is_array($debug_array[$tmp_counter]["args"])) {
+			if(isset($debug_array[$tmp_counter]["args"]) && is_array($debug_array[$tmp_counter]["args"])) {
 				$args_counter = count($debug_array[$tmp_counter]["args"]);
 			} else {
 				$args_counter = 0;
