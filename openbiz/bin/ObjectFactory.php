@@ -99,7 +99,7 @@ class ObjectFactory
      */
     protected function constructObject($objName, &$xmlArr=null)
     {
-        if (!$xmlArr)
+        if (!$xmlArr || (count($xmlArr) == 0))
         {
             $xmlFile = BizSystem::GetXmlFileWithPath ($objName);
             if (!$xmlFile)
@@ -108,8 +108,9 @@ class ObjectFactory
                 $package = $dotPos>0 ? substr($objName, 0, $dotPos) : null;
                 $class = $dotPos>0 ? substr($objName, $dotPos+1) : $objName;
             }
-            else
+            else {
                 $xmlArr = BizSystem::getXmlArray($xmlFile);
+            }
         }
         if ($xmlArr)
         {
@@ -143,7 +144,7 @@ class ObjectFactory
             $package = $dotPos>0 ? substr($objName, 0, $dotPos) : null;
             if (!$classPackage) $classPackage = $package;
             $xmlArr[$root]["ATTRIBUTES"]["PACKAGE"] = $package;
-        }
+	}
 
         if ($class == "BizObj")  // convert BizObj to BizDataObj, support <1.2 version
             $class = "BizDataObj";
@@ -154,9 +155,9 @@ class ObjectFactory
             if (!$classFile)
             {
                 if ($package)
-                    trigger_error("Cannot find the class with name as $package.$class", E_USER_ERROR);
+                    trigger_error("Cannot find the class with name as '$package.$class'", E_USER_ERROR);
                 else
-                    trigger_error("Cannot find the class with name as $class", E_USER_ERROR);
+                    trigger_error("Cannot find the class with name as '$class'", E_USER_ERROR);
                 exit();
             }
             include_once($classFile);
