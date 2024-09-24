@@ -32,6 +32,7 @@ class EasyView extends MetaObject implements iSessionObject
     public $m_ViewSet;
     public $m_Tab;
     public $m_FormRefs;
+	public $m_Tiles;
 
     public $m_IsPopup = false;
     public $m_Height;
@@ -71,7 +72,7 @@ class EasyView extends MetaObject implements iSessionObject
         $this->m_Tab = isset($xmlArr["EASYVIEW"]["ATTRIBUTES"]["TAB"]) ? $xmlArr["EASYVIEW"]["ATTRIBUTES"]["TAB"] : null;
 
         $this->m_FormRefs = new MetaIterator($xmlArr["EASYVIEW"]["FORMREFERENCES"]["REFERENCE"],"FormReference",$this);
-        if($xmlArr["EASYVIEW"]["FORMREFERENCELIBS"])
+        if(isset($xmlArr["EASYVIEW"]["FORMREFERENCELIBS"]))
         {
         	$this->m_FormRefLibs = new MetaIterator($xmlArr["EASYVIEW"]["FORMREFERENCELIBS"]["REFERENCE"],"FormReference",$this);
         }
@@ -362,7 +363,10 @@ class EasyView extends MetaObject implements iSessionObject
         $paramForm = isset($_REQUEST['form']) ? $_REQUEST['form'] : null;
         // check url arg as fld:name=val
         $getKeys = array_keys($_REQUEST);
-        $pageid = $_GET["pageid"];
+		$pageid = null;
+		if(isset($_GET["pageid"])) {
+			$pageid = $_GET["pageid"];
+		}
         
         $paramFields = null;
         foreach ($getKeys as $key)
@@ -461,8 +465,12 @@ class FormReference
     public function __construct($xmlArr)
     {
         $this->m_Name = $xmlArr["ATTRIBUTES"]["NAME"];
-        $this->m_SubForms = $xmlArr["ATTRIBUTES"]["SUBFORMS"];
-        $this->m_Description = $xmlArr["ATTRIBUTES"]["DESCRIPTION"];
+		if(isset($xmlArr["ATTRIBUTES"]["SUBFORMS"])) {
+			$this->m_SubForms = $xmlArr["ATTRIBUTES"]["SUBFORMS"];
+		}
+		if(isset($xmlArr["ATTRIBUTES"]["DESCRIPTION"])) {
+			$this->m_Description = $xmlArr["ATTRIBUTES"]["DESCRIPTION"];
+		}
     }
 
     /**
