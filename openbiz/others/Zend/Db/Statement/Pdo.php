@@ -264,6 +264,7 @@ class Zend_Db_Statement_Pdo extends Zend_Db_Statement implements IteratorAggrega
      */
     public function getIterator()
     {
+        #[\ReturnTypeWillChange]
         return new IteratorIterator($this->_stmt);
     }
 
