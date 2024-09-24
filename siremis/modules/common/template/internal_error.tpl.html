@@ -28,7 +28,7 @@ function showError(){
 	<div style="height:20px;"></div>
 		<div id="notice_msg" style="display:block;">
 		
-		{if $notices.status !='REPORTED'}
+		{if isset($notices.status) && $notices.status !='REPORTED'}
 		<p class="input_row" style="height:125px; line-height:20px;">
 		<label style="width:40px; height:125px;"></label>
 		<span>{t}
@@ -68,10 +68,10 @@ We are sorry for any inconvenience.
 		<div style="height:10px;"></div>
 		<p class="input_row">
 			<label style="width:40px; text-align:right"></label>
-			{if $notices.status !='REPORTED'}
-			{$actionPanel.btn_report.element} {$actionPanel.btn_showerr.element}
+			{if isset($notices.status) && $notices.status !='REPORTED'}
+			{$actionPanel.btn_report.element} {if isset($actionPanel.btn_showerr)} {$actionPanel.btn_showerr.element} {/if}
 			{else}
-			{$actionPanel.btn_back.element}
+			{if isset($actionPanel.btn_back.element)} {$actionPanel.btn_back.element} {/if}
 			{/if}
 		</p>
 </div>
