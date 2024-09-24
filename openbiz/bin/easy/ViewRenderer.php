@@ -110,9 +110,12 @@ class ViewRenderer
         $smarty->assign("keywords", $viewObj->m_Keywords);
         $smarty->assign("forms", $forms);
         $smarty->assign("formtabs", $formtabs);
-        $smarty->assign("tiles", $tiles);
-        $smarty->assign("tiletabs", $tiletabs);
-
+		if(isset($tiles)) {
+			$smarty->assign("tiles", $tiles);
+		}
+		if(isset($tiletabs)) {
+			$smarty->assign("tiletabs", $tiletabs);
+		}
         if ($viewObj->m_ConsoleOutput)
             $smarty->display(BizSystem::getTplFileWithPath($viewObj->m_TemplateFile, $viewObj->m_Package));
         else
