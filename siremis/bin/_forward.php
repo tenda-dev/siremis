@@ -14,9 +14,9 @@ $DEFAULT_VIEW = 'LoginView';
 $DEFAULT_MODULE = 'user';
 $DEFAULT_URL = 'index.php/user/login';
 
-if ($_SERVER['REDIRECT_QUERY_STRING']) {
+if (isset($_SERVER['REDIRECT_QUERY_STRING'])) {
     $url = $_SERVER['REDIRECT_QUERY_STRING'];
-} elseif (preg_match('/\?\/?(.*?)(\.html)?$/si', $_SERVER['REQUEST_URI'], $match)) {
+} elseif (isset($_SERVER['REQUEST_URI']) && preg_match('/\?\/?(.*?)(\.html)?$/si', $_SERVER['REQUEST_URI'], $match)) {
     // supports for http://localhost/?/user/login format
     // supports for http://localhost/index.php?/user/login format
     $url = $match[1];
