@@ -1,4 +1,5 @@
 <?PHP
+
 /**
  * PHPOpenBiz Framework
  *
@@ -13,8 +14,7 @@
  * @link      http://www.phpopenbiz.org/
  * @version   $Id$
  */
-
-include_once("InputElement.php");
+include_once ('InputElement.php');
 
 /**
  * Password class is element for input password
@@ -26,12 +26,14 @@ include_once("InputElement.php");
  */
 class Password extends InputElement
 {
-	public function readMetaData(&$xmlArr){
-		parent::readMetaData($xmlArr);
-		$this->m_cssClass = isset($xmlArr["ATTRIBUTES"]["CSSCLASS"]) ? $xmlArr["ATTRIBUTES"]["CSSCLASS"] : "input_text";		
-		$this->m_cssErrorClass = isset($xmlArr["ATTRIBUTES"]["CSSERRORCLASS"]) ? $xmlArr["ATTRIBUTES"]["CSSERRORCLASS"] : $this->m_cssClass."_error";
-		$this->m_cssFocusClass = isset($xmlArr["ATTRIBUTES"]["CSSFOCUSCLASS"]) ? $xmlArr["ATTRIBUTES"]["CSSFOCUSCLASS"] : $this->m_cssClass."_focus";
-	}
+    public function readMetaData(&$xmlArr)
+    {
+        parent::readMetaData($xmlArr);
+        $this->m_cssClass = isset($xmlArr['ATTRIBUTES']['CSSCLASS']) ? $xmlArr['ATTRIBUTES']['CSSCLASS'] : 'input_text';
+        $this->m_cssErrorClass = isset($xmlArr['ATTRIBUTES']['CSSERRORCLASS']) ? $xmlArr['ATTRIBUTES']['CSSERRORCLASS'] : $this->m_cssClass . '_error';
+        $this->m_cssFocusClass = isset($xmlArr['ATTRIBUTES']['CSSFOCUSCLASS']) ? $xmlArr['ATTRIBUTES']['CSSFOCUSCLASS'] : $this->m_cssClass . '_focus';
+    }
+
     /**
      * Render, draw the control according to the mode
      *
@@ -39,20 +41,19 @@ class Password extends InputElement
      */
     public function render()
     {
-        $disabledStr = ($this->getEnabled() == "N") ? "DISABLED=\"true\"" : "";
+        $disabledStr = ($this->getEnabled() == 'N') ? 'DISABLED="true"' : '';
         $style = $this->getStyle();
         $formobj = $this->GetFormObj();
-		$func = "";
-        if(isset($formobj->m_Errors) && isset($formobj->m_Errors[$this->m_Name])){
-			$func .= "onchange=\"this.className='$this->m_cssClass'\"";
-		}else{
-			$func .= "onfocus=\"this.className='$this->m_cssFocusClass'\" onblur=\"this.className='$this->m_cssClass'\"";
-		} 
-        $sHTML = "<INPUT TYPE=\"PASSWORD\" NAME='$this->m_Name' ID=\"" . $this->m_Name ."\" VALUE='$this->m_Value' $disabledStr $this->m_HTMLAttr $style $func />";
+        $func = '';
+        if (isset($formobj->m_Errors) && isset($formobj->m_Errors[$this->m_Name])) {
+            $func .= "onchange=\"this.className='$this->m_cssClass'\"";
+        } else {
+            $func .= "onfocus=\"this.className='$this->m_cssFocusClass'\" onblur=\"this.className='$this->m_cssClass'\"";
+        }
+        $sHTML = "<INPUT TYPE=\"PASSWORD\" NAME='$this->m_Name' ID=\"" . $this->m_Name . "\" VALUE='$this->m_Value' $disabledStr $this->m_HTMLAttr $style $func />";
 
         return $sHTML;
     }
-
 }
 
 ?>
