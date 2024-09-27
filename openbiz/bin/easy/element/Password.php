@@ -42,7 +42,8 @@ class Password extends InputElement
         $disabledStr = ($this->getEnabled() == "N") ? "DISABLED=\"true\"" : "";
         $style = $this->getStyle();
         $formobj = $this->GetFormObj();
-        if($formobj->m_Errors[$this->m_Name]){
+		$func = "";
+        if(isset($formobj->m_Errors) && isset($formobj->m_Errors[$this->m_Name])){
 			$func .= "onchange=\"this.className='$this->m_cssClass'\"";
 		}else{
 			$func .= "onfocus=\"this.className='$this->m_cssFocusClass'\" onblur=\"this.className='$this->m_cssClass'\"";
