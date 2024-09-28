@@ -9,7 +9,7 @@
 		<p class="input_row">
 			<label style="width:60px;">{$dataPanel.username.label}</label>
 			<span style="width:200px; display:block;float:left;">{$dataPanel.username.element}</span>
-			{if $errors.username}
+			{if isset($errors.username)}
 			<span class="input_error_msg">{$errors.username}</span>
 			{/if}			
 		</p>
@@ -17,7 +17,7 @@
 		<p class="input_row">
 			<label style="width:60px;">{$dataPanel.password.label}</label>
 			<span style="width:200px; display:block;float:left;">{$dataPanel.password.element}</span>
-			{if $errors.password}
+			{if isset($errors.password)}
 			<span class="input_error_msg">{$errors.password}</span>
 			{/if}		
 		</p>
@@ -25,7 +25,7 @@
 		<p class="input_row">
 			<label style="width:60px;">{$dataPanel.antispam.label}</label>
 			<span style="width:200px; display:block;float:left;">{$dataPanel.antispam.element}</span>
-			{if $errors.antispam}
+			{if isset($errors.antispam)}
 			<span class="input_error_msg">{$errors.antispam}</span>
 			{/if}		
 		</p>
@@ -33,7 +33,7 @@
 		<p class="input_row">
 			<label style="width:60px;">{$dataPanel.session_timeout.label}</label>
 			<span style="width:200px; display:block;float:left;">{$dataPanel.session_timeout.element}</span>
-			{if $errors.session_timeout}
+			{if isset($errors.session_timeout)}
 			<span class="input_error_msg">{$errors.session_timeout}</span>
 			{/if}		
 		</p>		
@@ -45,7 +45,7 @@
 			{/foreach}
 			</span>
 			
-			{if $errors.login_status}
+			{if isset($errors.login_status)}
 				<span id="login_indicator" class="show">
 				{$errors.login_status}
 				</span>
