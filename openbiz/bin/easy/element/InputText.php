@@ -49,7 +49,7 @@ class InputText extends InputElement
         $func = $this->getFunction();
         
         $formobj = $this->GetFormObj();
-    	if($formobj->m_Errors[$this->m_Name]){
+    	if(isset($formobj->m_Errors) && isset($formobj->m_Errors[$this->m_Name])){
 			$func .= "onchange=\"this.className='$this->m_cssClass'\"";
 		}else{
 			$func .= "onfocus=\"this.className='$this->m_cssFocusClass'\" onblur=\"this.className='$this->m_cssClass'\"";
